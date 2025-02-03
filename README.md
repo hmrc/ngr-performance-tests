@@ -1,20 +1,26 @@
-**This is a template README.md.  Be sure to update this with project specific content that describes your performance test project.**
 
 # ngr-performance-tests
 
-Performance test suite for the `<digital service name>`, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
+Performance test suite for the `NGR`, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
 
 ## Pre-requisites
 
 ### Services
-
-Start Mongo Docker container following instructions from the [MDTP Handbook](https://docs.tax.service.gov.uk/mdtp-handbook/documentation/developer-set-up/set-up-mongodb.html).
-
-Start `PLATFORM_TEST_EXAMPLE_UI_JOURNEY_TESTS` services as follows:
+Start Mongo Docker container as follows:
 
 ```bash
-sm2 --start PLATFORM_TEST_EXAMPLE_UI_JOURNEY_TESTS
+colima start
 ```
+```bash
+docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:5.0
+```
+Start NGR services as follows:
+
+```bash
+sm2 --start NGR_ALL --wait 100
+```
+Using the --wait 100 argument ensures a health check is run on all the services started as part of the profile. 
+100 refers to the given number of seconds to wait for services to pass health checks.
 
 ### Logging
 
