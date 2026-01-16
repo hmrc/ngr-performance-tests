@@ -16,5 +16,5 @@ class RegisterSimulation extends PerformanceTestRunner{
     RegisterRequests.getCheckAnswersPage
   )
 
-
+  runSimulation()
 }
